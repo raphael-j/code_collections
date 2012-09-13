@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
-    if (s_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP) < 0)
+    if ((s_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
 	die_func("socket", __LINE__);
 
     // si_me stores our local endpoint. Remember that this program
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     addr_me.sin_port = htons(atoi(argv[1]));
     addr_me.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    if (bind(s_socket , (struct sockaddr *)&addr_me, addr_len) < 0)
+    if ((bind(s_socket , (struct sockaddr *)&addr_me, addr_len)) < 0)
 	die_func("bind", __LINE__);
 
 

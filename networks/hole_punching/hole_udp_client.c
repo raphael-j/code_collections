@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     else   
 	printf("Server IP :%s Server Port : %d Own port : %d\n", argv[1], atoi(argv[2]), atoi(argv[3]));
 
-    if ((c_socket = socket(PF_INET, SOCK_DGRAM, 0)< 0))
+    if ((c_socket = socket(PF_INET, SOCK_DGRAM, 0))< 0)
 	    die_func("socket", __LINE__);
 
     memset(&addr_me, 0x00, sizeof(struct sockaddr_in));
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     // clients behind the same NAT, we'd send our won private UDP endpoint information
     // as well.
 
-    if (sendto(c_socket, "hi", 2, 0, (struct sockaddr*)(&addr_other), addr_size) < 0)
+    if ((sendto(c_socket, "hi", 2, 0, (struct sockaddr*)(&addr_other), addr_size)) < 0)
 	die_func("sendto", __LINE__);
 
     // Right here, our NAT should have a session entry between our host and the server.
